@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ jogo.nome }}</title>
+    <link rel="stylesheet" href="{% static 'catalogo/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ jogo.nome }}</h1>
+
+        <!-- EXIBINDO A FOTO -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            {% if jogo.foto %}
+                <img src="{{ jogo.foto.url }}" alt="Foto de {{ jogo.nome }}" style="max-width: 300px; border-radius: 10px;">
+            {% else %}
+                <p><i>Imagem não disponível para este jogo.</i></p>
+            {% endif %}
+        </div>
+
+        <p><strong>Descrição:</strong> {{ jogo.descricao|default:"Sem descrição adicional." }}</p>
+
+        <br>
+        <div class="actions">
+            {% if user.is_authenticated %}
+                <a href="{% url 'catalogo:editar_jogo' jogo.pk %}" class="btn">Editar</a>
+                <a href="{% url 'catalogo:apagar_jogo' jogo.pk %}" class="btn-danger">Apagar</a>
+            {% endif %}
+
+            <a href="{% url 'catalogo:lista_jogos' %}" class="btn">Voltar</a>
+        </div>
+    </div>
+</body>
+</html>

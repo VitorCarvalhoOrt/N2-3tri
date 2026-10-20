@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if form.instance.pk %}Editar Jogo{% else %}Novo Jogo{% endif %}</title>
+    <link rel="stylesheet" href="{% static 'catalogo/style.css' %}">
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Editar Jogo{% else %}Adicionar Jogo{% endif %}</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn">Salvar</button>
+        <a href="{% url 'catalogo:home' %}" class="btn">Cancelar</a>
+    </form>
+</body>
+</html>

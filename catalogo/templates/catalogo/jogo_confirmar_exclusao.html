@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Apagar jogo</title>
+    <link rel="stylesheet" href="{% static 'catalogo/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Apagar jogo</h1>
+        <p>Tem certeza de que deseja apagar "{{ jogo.nome }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn-danger">Apagar</button>
+            <a href="{% url 'catalogo:detalhe_jogo' jogo.pk %}" class="btn">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
