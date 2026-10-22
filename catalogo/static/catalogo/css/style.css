@@ -1,0 +1,263 @@
+* { /* css é magia negra  */
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px 16px;
+    color: #222;
+    background: #f4f5f7;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px;
+    border: 1px solid #d6d9df;
+    border-radius: 8px;
+    background: #fff;
+}
+
+h1,
+h2 {
+    line-height: 1.25;
+}
+
+h1 {
+    margin: 0 0 24px;
+    font-size: 2.5rem;
+}
+
+h2 {
+    margin: 32px 0 16px;
+}
+
+p {
+    color: #5f6672;
+}
+
+a {
+    color: #5145a5;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.botao,
+.botao-perigoso,
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    background: #5145a5;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao:hover,
+button:hover {
+    color: #fff;
+    background: #403783;
+    text-decoration: none;
+}
+
+.botao-perigoso {
+    background: #b33642;
+}
+
+.botao-perigoso:hover {
+    color: #fff;
+    background: #902a34;
+    text-decoration: none;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid #5145a5;
+    outline-offset: 2px;
+}
+
+.lista-jogos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cartao-jogo,
+.jogo-destaque,
+.avaliacao {
+    padding: 18px;
+    border: 1px solid #d6d9df;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.cartao-jogo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cartao-jogo > a:last-of-type {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.cartao-jogo .acoes {
+    margin-top: auto;
+}
+
+.capa-jogo {
+    display: block;
+    width: 100%;
+    height: 190px;
+    border-radius: 4px;
+    background: #eceef2;
+    object-fit: cover;
+}
+
+.link-capa-jogo:hover,
+.link-imagem-jogo:hover {
+    opacity: 0.85;
+}
+
+.jogo-destaque {
+    margin-bottom: 24px;
+    background: #f7f6ff;
+}
+
+.jogo-destaque h2 {
+    margin-top: 0;
+}
+
+.jogo-destaque .capa-jogo {
+    max-width: 360px;
+    margin-bottom: 12px;
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.imagem-jogo {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    max-height: 420px;
+    margin: 0 auto 24px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.descricao-jogo,
+.avaliacao {
+    padding: 16px;
+    border: 1px solid #d6d9df;
+    border-radius: 6px;
+    background: #f8f9fa;
+}
+
+.container-formulario {
+    max-width: 680px;
+}
+
+form p {
+    margin: 0 0 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+input:not([type="checkbox"]):not([type="file"]),
+textarea,
+select {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 10px;
+    border: 1px solid #d6d9df;
+    border-radius: 5px;
+    color: #222;
+    background: #fff;
+    font: inherit;
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+input[type="file"] {
+    max-width: 100%;
+    font: inherit;
+}
+
+.helptext,
+.errorlist {
+    color: #5f6672;
+    font-size: 0.9rem;
+}
+
+.errorlist {
+    padding-left: 20px;
+    color: #b33642;
+}
+
+.lista-avaliacoes {
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    list-style: none;
+}
+
+.avaliacao p {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 16px 10px;
+    }
+
+    .container {
+        padding: 20px 16px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .lista-jogos {
+        grid-template-columns: 1fr;
+    }
+
+    .acoes > a,
+    form > .botao,
+    form > .botao-perigoso,
+    form > button {
+        flex: 1 1 auto;
+    }
+}

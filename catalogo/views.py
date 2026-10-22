@@ -34,10 +34,6 @@ def detalhes(request, pk):
     context = {'jogo': jogo, 'reviews': reviews, 'form': form}
     return render(request, 'catalogo/detalhe_jogo.html', context)
 
-@login_required
-def dashboard(request):
-    jogos = Jogo.objects.all().order_by('nome')
-    return render(request, 'catalogo/dashboard.html', {'jogos': jogos})
 
 @login_required
 def novo_jogo(request):

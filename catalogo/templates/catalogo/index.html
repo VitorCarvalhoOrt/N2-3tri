@@ -4,34 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Jogos</title>
-    <link rel="stylesheet" href="{% static 'catalogo/style.css' %}">
+    <link rel="stylesheet" href="{% static 'catalogo/css/style.css' %}">
 </head>
 <body>
     <div class="container">
         <h1>Jogos</h1>
 
         {% if user.is_authenticated %}
-        <a href="{% url 'catalogo:novo_jogo' %}" class="btn">Adicionar Jogo</a>
+        <a href="{% url 'catalogo:novo_jogo' %}" class="botao">Adicionar Jogo</a>
         {% endif %}
-        <br><br>
+
+        {% if em_destaque %}
+            <section class="jogo-destaque">
+                <h2>Jogo em destaque</h2>
+                <a class="link-capa-jogo" href="{% url 'catalogo:detalhe_jogo' em_destaque.pk %}">
+                    {% if em_destaque.foto %}
+                        <img class="capa-jogo" src="{{ em_destaque.foto.url }}" alt="Capa de {{ em_destaque.nome }}">
+                    {% endif %}
+                </a>
+                <a href="{% url 'catalogo:detalhe_jogo' em_destaque.pk %}">
+                    <strong>{{ em_destaque.nome }} - {{ em_destaque.genero }}</strong>
+                </a>
+            </section>
+        {% endif %}
 
         {% if jogos %}
-            <ul>
+            <ul class="lista-jogos">
                 {% for jogo in jogos %}
-                    <li>
-                        <a href="{% url 'catalogo:detalhe_jogo' jogo.pk %}"><strong>{{ jogo.nome }} {{ jogo.genero }}</strong></a>
+                    <li class="cartao-jogo">
+                        <a class="link-capa-jogo" href="{% url 'catalogo:detalhe_jogo' jogo.pk %}">
+                            {% if jogo.foto %}
+                                <img class="capa-jogo" src="{{ jogo.foto.url }}" alt="Capa de {{ jogo.nome }}">
+                            {% endif %}
+                        </a>
+                        <a href="{% url 'catalogo:detalhe_jogo' jogo.pk %}"><strong>{{ jogo.nome }} - {{ jogo.genero }}</strong></a>
 
                         {% if user.is_authenticated %}
-                        <div class="actions">
-                            <a href="{% url 'catalogo:editar_jogo' jogo.pk %}" class="btn">Editar</a>
-                            <a href="{% url 'catalogo:apagar_jogo' jogo.pk %}" class="btn-danger">Apagar</a>
+                        <div class="acoes">
+                            <a href="{% url 'catalogo:editar_jogo' jogo.pk %}" class="botao">Editar</a>
+                            <a href="{% url 'catalogo:apagar_jogo' jogo.pk %}" class="botao-perigoso">Apagar</a>
                         </div>
                         {% endif %}
                     </li>
                 {% endfor %}
             </ul>
         {% else %}
-            <p>Nenhum jogo cadastrado.</p>
+            <p>Nenhum jogo cadastrado (dica: faca login para cadastrar).</p>
         {% endif %}
     </div>
 </body>
