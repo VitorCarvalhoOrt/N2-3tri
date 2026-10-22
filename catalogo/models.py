@@ -17,7 +17,7 @@ class Plataforma(models.Model):
 
 class Jogo(models.Model):
     nome = models.CharField(max_length=128)
-    preco = models.DecimalField(max_digits=4, decimal_places=2)
+    preco = models.DecimalField(max_digits=6, decimal_places=2)
     data_lancamento = models.DateField('LANÇAMENTO')
     descricao = models.TextField('Descrição', blank=True, default='')
     foto = models.ImageField(upload_to='capas/')

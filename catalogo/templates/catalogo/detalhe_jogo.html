@@ -18,6 +18,7 @@
             <p class="imagem-jogo-indisponivel"><i>Imagem não disponível para este jogo.</i></p>
         {% endif %}
 
+        <p><strong>Data de lançamento:</strong> {{ jogo.data_lancamento|date:"d/m/Y" }}</p>
         <p class="descricao-jogo"><strong>Descrição:</strong> {{ jogo.descricao|default:"Sem descrição adicional." }}</p>
 
         <section aria-labelledby="reviews-title">
