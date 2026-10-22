@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Django and local data
+db.sqlite3
+staticfiles/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Test and coverage output
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor and operating system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+catalogo/__pycache__/__init__.cpython-314.pyc
+catalogo/__pycache__/admin.cpython-314.pyc
